@@ -400,6 +400,19 @@ hr {
   border: 0;
 }
 
+/* Real photo frame: same aspect-ratio classes as .ph, but for an actual <img> */
+.photo-frame {
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  overflow: hidden;
+}
+.photo-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 /* On the dark hero, the placeholder needs to read as a photo slot, not a card */
 .ph--hero {
   aspect-ratio: auto;
