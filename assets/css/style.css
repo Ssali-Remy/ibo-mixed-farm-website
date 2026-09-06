@@ -1361,6 +1361,23 @@ hr {
   font-size: 0.62rem;
 }
 
+.logo-tile {
+  aspect-ratio: 5 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 0.75rem;
+}
+
+.logo-tile img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
 /* Partner name columns */
 .name-columns {
   columns: 1;
