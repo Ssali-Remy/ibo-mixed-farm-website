@@ -78,6 +78,8 @@ def head(meta: dict, page: str) -> str:
 <title>{meta['title']}</title>
 <meta name="description" content="{meta['description']}">
 <link rel="canonical" href="{canonical}">
+<link rel="icon" type="image/png" href="assets/img/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/img/ibo-logo-128.png">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="IBO Mixed Farm Ltd">
@@ -120,7 +122,7 @@ def header(page: str) -> str:
 <header class="site-header">
   <div class="wrap site-header__inner">
     <a class="brand" href="index.html">
-      <span class="ph ph--logo" aria-hidden="true"></span>
+      <img class="brand__logo" src="assets/img/ibo-logo-128.png" alt="" width="44" height="44" aria-hidden="true">
       <span class="brand__text">
         <span class="brand__name">IBO Mixed Farm</span>
         <span class="brand__tag">Optimum Utilization of Land</span>
@@ -157,7 +159,7 @@ FOOTER = """<footer class="site-footer">
     <div class="footer__grid">
       <div class="footer__brand">
         <a class="brand" href="index.html">
-          <span class="ph ph--logo" aria-hidden="true"></span>
+          <img class="brand__logo" src="assets/img/ibo-logo-128.png" alt="" width="44" height="44" aria-hidden="true">
           <span class="brand__text">
             <span class="brand__name">IBO Mixed Farm Ltd</span>
             <span class="brand__tag">Optimum Utilization of Land</span>

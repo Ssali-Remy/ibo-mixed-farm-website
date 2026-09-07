@@ -424,6 +424,15 @@ hr {
   color: #a9bda9;
 }
 
+.brand__logo {
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
 /* Logo mark placeholder */
 .ph--logo {
   aspect-ratio: 1 / 1;
