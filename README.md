@@ -80,7 +80,8 @@ drawer, the sitemap and the "current page" highlight all follow automatically.
 ├── assets/
 │   ├── css/style.css     All styling, one file, tokens at the top
 │   ├── js/main.js        All behaviour, one file, contact details at the top
-│   └── img/              Empty — real photographs go here
+│   └── img/              Real farm photographs, the logo and partner logos
+│                         (a few specific subjects still open — see below)
 ├── *.html                Generated output (do not edit by hand)
 ├── sitemap.xml           Generated
 └── robots.txt            Generated
@@ -98,16 +99,16 @@ These are the items that must be settled before the site goes live. Everything
 marked **TODO** is a placeholder deliberately left visible so it cannot be
 missed.
 
-| # | Item | Where |
-|---|------|-------|
-| 1 | **Phone / WhatsApp number.** Currently `+256 700 000 000`. The number on the farm's exhibition banner was not legible in the photographs supplied. | `assets/js/main.js` → `IBO.WHATSAPP` and `IBO.PHONE_DISPLAY` |
-| 2 | **Domain.** The site is written against `https://www.ibomixfarm.com`. Confirm the final domain and update. | `build.py` → `SITE_URL` |
-| 3 | **Logo.** A green circle marked "IBO" stands in for the real logo mark in the header and footer. | `assets/css/style.css` → `.ph--logo`; markup in `build.py` |
-| 4 | **Photographs.** Every image is a blank placeholder. See below. | throughout |
-| 5 | **Social links.** Facebook, Instagram, YouTube and X icons in the footer point at `#` until the accounts are created. | `build.py` → `FOOTER` |
-| 6 | **Exact map pin.** The map is centred on Bwizibwera. Set the precise pin once the Google Business Profile is verified. | `src/contact.html` |
-| 7 | **Where enquiries go.** See the note on forms below. | `assets/js/main.js` → `FORM_ENDPOINT` |
-| 8 | **Fee inclusions.** UGX 400,000 per month is stated as all-inclusive; confirm exactly what that covers. | `src/training.html` |
+| # | Item | Status | Where |
+|---|------|--------|-------|
+| 1 | **Phone / WhatsApp number.** Currently `+256 700 000 000`. The number on the farm's exhibition banner was not legible in the photographs supplied. | Still open | `assets/js/main.js` → `IBO.WHATSAPP` and `IBO.PHONE_DISPLAY` |
+| 2 | **Domain.** The site is written against `https://www.ibomixfarm.com`. Confirm the final domain and update. | Still open | `build.py` → `SITE_URL` |
+| 3 | **Logo.** ~~A green circle marked "IBO" stands in for the real logo.~~ | **Done** — real logo now in the header, footer and favicon | `assets/img/ibo-logo.png` |
+| 4 | **Photographs.** ~~Every image is a blank placeholder.~~ | **Mostly done** — real farm photographs throughout; a handful of specific subjects are still open, see below | throughout |
+| 5 | **Social links.** ~~Facebook, Instagram, YouTube and X icons point at `#`.~~ | **Mostly done** — Facebook, Instagram, X and TikTok now link to the real accounts; YouTube still pending | `build.py` → `FOOTER` |
+| 6 | **Exact map pin.** The map is centred on Bwizibwera. Set the precise pin once the Google Business Profile is verified. | Still open | `src/contact.html` |
+| 7 | **Where enquiries go.** See the note on forms below. | Still open | `assets/js/main.js` → `FORM_ENDPOINT` |
+| 8 | **Fee inclusions.** UGX 400,000 per month is stated as all-inclusive; confirm exactly what that covers. | Still open | `src/training.html` |
 
 ### How the forms work right now
 
@@ -138,14 +139,26 @@ from answers that pointed at documents rather than content.
       training page.
 - [ ] **Certificates** (Q34, Q76) — scans of the UVTAB accreditation and company
       registration for the credentials section.
-- [ ] **Partner logos** (Q77) — permission confirmed; the logo wall has twelve
-      empty slots on the About page.
+- [x] ~~**Partner logos** (Q77)~~ — done. Ten real, linked partner logos now
+      appear on the About page and the homepage.
 - [ ] **Milestone dates.** The About timeline has the sequence of events but not
       the years for each. Confirm with the Director.
 - [ ] **Impact numbers** (Q39). The sheet's own note asks: how many jobs created,
       how many trainees now employed or self-employed? Real figures here would
       be the strongest credibility content on the site.
-- [ ] **Bios and portraits** for Betty Arinaitwe and Olla Allan.
+- [ ] **Individual portraits** of Dr. Innocent Arinaitwe, Betty Arinaitwe and
+      Olla Allan. Several group photos were supplied, but nobody in them is
+      identified, so the three bios still show a blank photo slot rather than
+      risk mislabelling someone. A close, individual photo of each person
+      (with a name attached) resolves this immediately.
+- [ ] **Four more specific photographs** the supplied batch didn't cover, now
+      that everything else has a real photo: a plant clinic / disease-diagnosis
+      session in progress, soil sampling or testing being carried out, a farm
+      layout sketch or aerial view of the blocks, and a value-addition /
+      processing activity (packaging, bottling, etc.).
+- [ ] **Named awards, certificates or press mentions** from the last few
+      quarters — useful for the content-calendar "achievement spotlight" posts,
+      which currently draw only on figures already published on the site.
 - [ ] **Style references** (Q47, unanswered) — if the Director has sites he likes,
       the look can still be adjusted.
 - [ ] **Competitor sites** (Q75, unanswered) — useful for the SEO work.
@@ -159,9 +172,13 @@ correctly without it.
 
 ## Replacing the placeholder images
 
-Every image slot is a `div` with class `ph`, not an `<img>`, so there are no
-broken-image icons anywhere. Each one carries a `data-label` describing exactly
-which photograph belongs there:
+Most of this section is now done — real photographs are wired in throughout
+the site. What follows is how it works, for the handful of slots still open
+and for anything added later.
+
+A remaining placeholder is a `div` with class `ph`, not an `<img>`, so there
+are no broken-image icons anywhere. Each one carries a `data-label` describing
+exactly which photograph belongs there:
 
 ```html
 <div class="ph ph--4x5" data-label="Photo — trainees working in the nursery"></div>
@@ -172,9 +189,11 @@ image, keeping the aspect-ratio class on a wrapper if you want the layout to
 hold its shape:
 
 ```html
-<img src="assets/img/nursery-trainees.jpg"
-     alt="Trainees preparing corms in the macro-propagation nursery"
-     width="800" height="1000" loading="lazy">
+<div class="photo-frame ph--4x5">
+  <img src="assets/img/farm/nursery-trainees.jpg"
+       alt="Trainees preparing corms in the macro-propagation nursery"
+       loading="lazy">
+</div>
 ```
 
 Aspect-ratio helpers available: `ph--16x9`, `ph--3x2`, `ph--4x5`, `ph--1x1`,
@@ -184,10 +203,26 @@ flush inside a card) and `ph--round`.
 **Always write a real `alt` description** — it matters for accessibility and for
 Google Images, which is a genuine traffic source for a farm.
 
-The farm photographs already supplied (the WhatsApp set from the agricultural
-show) cover the exhibition stand, banners, trainees and certificate presentations
-— enough for the gallery's "Events & partners" and "Training" categories. Field,
-nursery, livestock and portrait shots will need to be taken.
+### What's still open
+
+Every generic placeholder (plantation, coffee garden, nursery, livestock,
+training sessions, farm events) now has a real photograph. What's still
+blank, and why:
+
+- **The three founder/co-founder portraits** (Dr. Innocent Arinaitwe, Betty
+  Arinaitwe, Olla Allan) — group photos exist, but nobody in them is labelled,
+  so a guess would risk misidentifying someone. Needs one individual, named
+  photo per person.
+- **Plant clinic / disease diagnosis**, **soil sampling or testing**, **a farm
+  layout sketch or aerial view**, and **value addition / processing** — the
+  photo batch supplied didn't include any of these four subjects, and nothing
+  in stock photo libraries could stand in without either misrepresenting the
+  farm or showing someone who isn't the farm's own staff. Real photos of any
+  of these close the last gaps.
+
+Full credits for the small number of licensed stock photos used elsewhere
+(clearly marked, and never for the farm's own staff or events) are in
+`assets/img/gallery/CREDITS.md` and `assets/img/farm/CREDITS.md`.
 
 ---
 
@@ -259,7 +294,7 @@ Clause 4.1 of BBC-IBO-WSM-2026-004 lists eight website deliverables:
 |---|---|
 | Mobile-first responsive site, up to 7 core pages | Done — 7 pages |
 | Enquiry/contact form, click-to-call, WhatsApp button | Done — 4 forms, click-to-call, floating WhatsApp on every page |
-| Photo and video gallery | Structure done, filterable; awaiting photographs and the YouTube channel |
+| Photo and video gallery | Photos done and filterable; video section awaiting the YouTube channel |
 | Basic on-page SEO | Done — titles, descriptions, canonicals, Open Graph, JSON-LD, sitemap, robots.txt, semantic headings |
 | Google Analytics + Search Console | Not done — needs accounts and the live domain |
 | Verified Google Business Profile | Not done — needs the farm's phone number and verification |
