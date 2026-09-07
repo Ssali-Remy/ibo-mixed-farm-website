@@ -4,12 +4,17 @@
 
 ---
 
-## The website is live
+## The website is done and ready for your review
 
-Your website is finished and online. You can visit it anytime, from your
-phone or computer, at:
+Your website is finished and live on a demo address, ready for you to look
+through and tell us what you think:
 
-**[www.ibomixfarm.com — insert your final web address here]**
+**[https://ssali-remy.github.io/ibo-mixed-farm-website/](https://ssali-remy.github.io/ibo-mixed-farm-website/)**
+
+Open that link on your phone or computer — it works exactly the same as the
+final site will. Once you've reviewed it and we have your final domain name
+(for example `www.ibomixfarm.com`), we simply point that domain at this same
+site and it goes live under your own name at no extra rebuilding.
 
 It has seven pages: Home, About, Training, Services, Gallery, Farming Tips,
 and Contact. Anyone who visits can read about the farm, see photos, learn
