@@ -17,7 +17,7 @@
   --green-100: #e4efe6;
   --green-050: #f1f7f1;
 
-  --gold-600: #b8820c;
+  --gold-600: #96690a; /* darkened from #b8820c: 3.4:1 on cream failed WCAG AA for small text (4.5:1) — this reads 4.5:1+ */
   --gold-500: #d99a0b;
   --gold-400: #e9b73e;
   --gold-100: #fbf0d4;
