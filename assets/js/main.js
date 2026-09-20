@@ -44,7 +44,7 @@ function applyContactDetails() {
     const preset = el.getAttribute("data-whatsapp");
     const text = preset
       ? preset
-      : "Hello IBO Mixed Farm, I found you on your website and I would like to make an enquiry.";
+      : "Hi IBO Mixed Farm — I'm reaching out from your website.";
     el.setAttribute(
       "href",
       "https://wa.me/" + IBO.WHATSAPP + "?text=" + encodeURIComponent(text)
@@ -140,20 +140,28 @@ function initGalleryFilter() {
   const items = document.querySelectorAll(".gallery-item");
   if (!buttons.length || !items.length) return;
 
-  buttons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const filter = btn.dataset.filter;
+  const applyFilter = (btn) => {
+    const filter = btn.dataset.filter;
 
-      buttons.forEach((b) =>
-        b.setAttribute("aria-pressed", String(b === btn))
-      );
+    buttons.forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
 
-      items.forEach((item) => {
-        const show = filter === "all" || item.dataset.category === filter;
-        item.hidden = !show;
-      });
+    items.forEach((item) => {
+      const show = filter === "all" || item.dataset.category === filter;
+      item.hidden = !show;
     });
+  };
+
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => applyFilter(btn));
   });
+
+  // A link like gallery.html#nursery opens straight into that filter,
+  // so other pages can point at the relevant slice of the gallery.
+  const requested = window.location.hash.replace("#", "");
+  const requestedBtn = requested
+    ? [...buttons].find((b) => b.dataset.filter === requested)
+    : null;
+  if (requestedBtn) applyFilter(requestedBtn);
 }
 
 /* --------------------------------------------------------------------------

@@ -413,6 +413,36 @@ hr {
   object-fit: cover;
 }
 
+/* Hero photo slider: five real photos, pure CSS crossfade, no JS */
+.hero-slider {
+  position: relative;
+}
+
+.hero-slider__img {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  animation: hero-slider-fade 25s infinite;
+}
+
+@keyframes hero-slider-fade {
+  0% { opacity: 1; }
+  17% { opacity: 1; }
+  20% { opacity: 0; }
+  97% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-slider__img {
+    animation: none;
+    opacity: 0;
+  }
+  .hero-slider__img:first-child {
+    opacity: 1;
+  }
+}
+
 /* On the dark hero, the placeholder needs to read as a photo slot, not a card */
 .ph--hero {
   aspect-ratio: auto;
